@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    group:
+      default: api, db
+      dev: api, db
+      qs: api, db
+      prod: api, db
+
+logging:
+  level:
+    root: INFO
