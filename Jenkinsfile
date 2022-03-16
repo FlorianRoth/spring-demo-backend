@@ -20,5 +20,16 @@ pipeline {
                 sh 'mvn deploy'
             }
         }
+        stage('Git Tag') {
+            steps {
+                echo 'Setting Git Tag....'
+                sh 'printenv'
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
     }
 }
