@@ -15,25 +15,19 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.xml
----
-spring:
-  config:
-    activate:
-      on-profile: dev
 
 ---
-spring:
-  config:
-    activate:
-      on-profile: qs
+spring.config.activate.on-profile: dev
 
+---
+spring.config.activate.on-profile: qs
+
+spring:
   h2:
     console.enabled: false
 ---
-spring:
-  config:
-    activate:
-      on-profile: prod
+spring.config.activate.on-profile: prod
 
+spring:
   h2:
     console.enabled: false

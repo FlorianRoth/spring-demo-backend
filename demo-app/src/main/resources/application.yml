@@ -1,10 +1,13 @@
 spring:
   profiles:
     group:
-      default: api, db
-      dev: api, db
-      qs: api, db
-      prod: api, db
+      dev:
+      qs:
+      prod:
+    include: api, db
+
+server:
+  port: 8100
 
 logging:
   level:

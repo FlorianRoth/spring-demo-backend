@@ -1,22 +1,13 @@
-server:
-  port: 8100
-
 spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
 
 ---
-spring:
-  config:
-    activate:
-      on-profile: dev
+spring.config.activate.on-profile: dev
 
 
 ---
-spring:
-  config:
-    activate:
-      on-profile: qs
+spring.config.activate.on-profile: qs
 
 springdoc:
   api-docs:
@@ -25,10 +16,7 @@ springdoc:
     enabled: false
 
 ---
-spring:
-  config:
-    activate:
-      on-profile: prod
+spring.config.activate.on-profile: prod
 
 springdoc:
   api-docs:

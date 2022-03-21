@@ -1,8 +1,9 @@
 package com.example.demo.api.resources;
 
 import com.example.demo.api.dto.DemoDto;
-import com.example.demo.api.mapper.DemoMapper;
-import com.example.demo.core.ports.DemoService;
+import com.example.demo.api.mapper.DemoDtoMapper;
+import com.example.demo.core.ports.in.CreateDemoUseCase;
+import com.example.demo.core.ports.in.ListDemosUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -20,13 +21,16 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v1/demos")
 public class DemoResource {
 
-    private final DemoService demoService;
-    private final DemoMapper demoMapper;
+    private final DemoDtoMapper demoMapper;
+    private final CreateDemoUseCase createDemoUseCase;
+    private final ListDemosUseCase listDemosUseCase;
 
     public DemoResource(
-            DemoService demoService,
-            DemoMapper demoMapper) {
-        this.demoService = demoService;
+            CreateDemoUseCase createDemoUseCase,
+            ListDemosUseCase listDemosUseCase,
+            DemoDtoMapper demoMapper) {
+        this.createDemoUseCase = createDemoUseCase;
+        this.listDemosUseCase = listDemosUseCase;
         this.demoMapper = demoMapper;
     }
 
@@ -53,11 +57,11 @@ public class DemoResource {
             }
     )
     public List<DemoDto> getAll() {
-        var demos = this.demoService.getDemos();
+        var demos = this.listDemosUseCase.getDemos();
 
         return demos
                 .stream()
-                .map(demoMapper::fromModel)
+                .map(demoMapper::toDto)
                 .collect(Collectors.toList());
     }
 
@@ -79,9 +83,9 @@ public class DemoResource {
             }
     )
     public DemoDto create() {
-        var demo = this.demoService.createDemo();
+        var demo = this.createDemoUseCase.createDemo();
 
-        return demoMapper.fromModel(demo);
+        return demoMapper.toDto(demo);
     }
 
 }
