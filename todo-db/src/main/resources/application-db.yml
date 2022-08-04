@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: true
+
+  h2:
+    console.enabled: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+---
+spring.config.activate.on-profile: dev
+
+---
+spring.config.activate.on-profile: qs
+
+spring:
+  h2:
+    console.enabled: false
+---
+spring.config.activate.on-profile: prod
+
+spring:
+  h2:
+    console.enabled: false

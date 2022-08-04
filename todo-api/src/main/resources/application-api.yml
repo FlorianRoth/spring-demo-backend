@@ -1,0 +1,43 @@
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+springdoc:
+  api-docs:
+    enabled: ${todo-api.openapi.enabled}
+  swagger-ui:
+    enabled: ${todo-api.openapi.enabled}
+
+server:
+  error:
+    include-stacktrace: always
+
+todo-api:
+  openapi:
+    enabled: true
+
+---
+spring.config.activate.on-profile: dev
+
+
+---
+spring.config.activate.on-profile: qs
+
+server:
+  error:
+    include-stacktrace: never
+
+todo-api:
+  openapi:
+    enabled: false
+
+---
+spring.config.activate.on-profile: prod
+
+server:
+  error:
+    include-stacktrace: never
+
+todo-api:
+  openapi:
+    enabled: false

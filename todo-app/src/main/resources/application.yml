@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    group:
+      local:
+      dev: cloud
+      qs: cloud
+      prod: cloud
+    include: core, api, db, kafka
+
+server:
+  port: 8100
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
