@@ -1,0 +1,17 @@
+GET {{host}}/api/v1/demos
+Accept: application/json
+
+###
+
+GET {{host}}/api/v1/demos
+Accept: application/xml
+
+###
+
+POST {{host}}/api/v1/demos
+Accept: application/json
+
+###
+
+DELETE {{host}}/api/v1/demos/1
+Accept: application/json

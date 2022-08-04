@@ -2,7 +2,9 @@ package com.example.demo.db.adapters;
 
 import com.example.demo.core.models.Demo;
 import com.example.demo.core.ports.out.DemoRepository;
+import com.example.demo.db.mapper.DemoEntityMapper;
 import com.example.demo.db.repositories.DemoEntityRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -10,17 +12,11 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
+@RequiredArgsConstructor
 public class DemoRepositoryAdapter implements DemoRepository {
 
     private final DemoEntityRepository demoEntityRepository;
     private final DemoEntityMapper demoMapper;
-
-    public DemoRepositoryAdapter(
-            DemoEntityRepository demoEntityRepository,
-            DemoEntityMapper demoMapper) {
-        this.demoEntityRepository = demoEntityRepository;
-        this.demoMapper = demoMapper;
-    }
 
     @Override
     public Demo save(Demo demo) {

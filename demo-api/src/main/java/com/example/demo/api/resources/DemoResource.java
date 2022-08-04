@@ -1,91 +1,107 @@
 package com.example.demo.api.resources;
 
 import com.example.demo.api.dto.DemoDto;
-import com.example.demo.api.mapper.DemoDtoMapper;
-import com.example.demo.core.ports.in.CreateDemoUseCase;
-import com.example.demo.core.ports.in.ListDemosUseCase;
+import com.example.demo.api.openapi.DefaultApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.headers.Header;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-@RestController()
 @RequestMapping("/api/v1/demos")
-public class DemoResource {
+@Tag(name = "demos", description = "Demo API")
+public interface DemoResource {
 
-    private final DemoDtoMapper demoMapper;
-    private final CreateDemoUseCase createDemoUseCase;
-    private final ListDemosUseCase listDemosUseCase;
 
-    public DemoResource(
-            CreateDemoUseCase createDemoUseCase,
-            ListDemosUseCase listDemosUseCase,
-            DemoDtoMapper demoMapper) {
-        this.createDemoUseCase = createDemoUseCase;
-        this.listDemosUseCase = listDemosUseCase;
-        this.demoMapper = demoMapper;
-    }
-
-    @GetMapping
+    @GetMapping(
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
     @Operation(
             summary = "Gets all Demo objects",
-            description = "Gets all Demo objects.",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Success",
-                            content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = DemoDto.class)))
-                    ),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "Not found",
-                            content = @Content
-                    ),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "Internal error",
-                            content = @Content
-                    )
-            }
+            description = "Gets all Demo objects."
     )
-    public List<DemoDto> getAll() {
-        var demos = this.listDemosUseCase.getDemos();
+    @ApiResponse(
+            responseCode = "200",
+            description = "The list of resources",
+            content = @Content(
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    array = @ArraySchema(schema = @Schema(implementation = DemoDto.class)))
+    )
+    @DefaultApiResponses
+    public ResponseEntity<List<DemoDto>> getAll();
 
-        return demos
-                .stream()
-                .map(demoMapper::toDto)
-                .collect(Collectors.toList());
-    }
-
-    @PostMapping
+    @PostMapping(
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(
             summary = "Creates a new Demo object",
-            description = "Creates a new Demo object",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Success",
-                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = DemoDto.class))
-                    ),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "Internal error",
-                            content = @Content
-                    )
-            }
+            description = "Creates a new Demo object"
     )
-    public DemoDto create() {
-        var demo = this.createDemoUseCase.createDemo();
+    @ApiResponse(
+            responseCode = "201",
+            description = "The new resource was created",
+            headers = @Header(
+                    name = HttpHeaders.LOCATION,
+                    description = "The URI of the newly created resource"),
+            content = @Content(
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    schema = @Schema(implementation = DemoDto.class))
+    )
+    @DefaultApiResponses
+    public ResponseEntity<DemoDto> post();
 
-        return demoMapper.toDto(demo);
-    }
+    @PutMapping(
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(
+            summary = "Creates or replaces new Demo object",
+            description = "Creates or replaces an existing Demo object"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "The resource was updated",
+            content = @Content(
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    schema = @Schema(implementation = DemoDto.class))
+    )
+    @ApiResponse(
+            responseCode = "201",
+            description = "The new resource was created",
+            headers = @Header(
+                    name = HttpHeaders.LOCATION,
+                    description = "The URI of the newly created resource"),
+            content = @Content(
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    schema = @Schema(implementation = DemoDto.class))
+    )
+    @DefaultApiResponses
+    public ResponseEntity<DemoDto> put(@RequestBody DemoDto body);
 
+    @DeleteMapping(
+            path = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Operation(
+            summary = "Deletes a Demo object",
+            description = "Deletes a Demo object"
+    )
+    @ApiResponse(
+            responseCode = "204",
+            description = "The resource was deleted",
+            content = @Content
+    )
+    @DefaultApiResponses
+    public ResponseEntity<Void> delete(@PathVariable("id") String id);
 }

@@ -1,4 +1,4 @@
-package com.example.demo.db.adapters;
+package com.example.demo.db.mapper;
 
 import com.example.demo.core.models.Demo;
 import com.example.demo.db.entities.DemoEntity;

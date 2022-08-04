@@ -1,10 +1,11 @@
 spring:
   profiles:
     group:
-      dev:
-      qs:
-      prod:
-    include: api, db
+      local:
+      dev: cloud
+      qs: cloud
+      prod: cloud
+    include: core, api, db
 
 server:
   port: 8100

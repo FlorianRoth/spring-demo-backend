@@ -2,6 +2,20 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
 
+springdoc:
+  api-docs:
+    enabled: ${demo-api.openapi.enabled}
+  swagger-ui:
+    enabled: ${demo-api.openapi.enabled}
+
+server:
+  error:
+    include-stacktrace: always
+
+demo-api:
+  openapi:
+    enabled: true
+
 ---
 spring.config.activate.on-profile: dev
 
@@ -9,17 +23,21 @@ spring.config.activate.on-profile: dev
 ---
 spring.config.activate.on-profile: qs
 
-springdoc:
-  api-docs:
-    enabled: false
-  swagger-ui:
+server:
+  error:
+    include-stacktrace: never
+
+demo-api:
+  openapi:
     enabled: false
 
 ---
 spring.config.activate.on-profile: prod
 
-springdoc:
-  api-docs:
-    enabled: false
-  swagger-ui:
+server:
+  error:
+    include-stacktrace: never
+
+demo-api:
+  openapi:
     enabled: false
