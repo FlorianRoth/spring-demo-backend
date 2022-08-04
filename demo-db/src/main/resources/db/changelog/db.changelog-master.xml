@@ -11,8 +11,10 @@
             http://www.liquibase.org/xml/ns/pro
             http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.8.xsd">
     <changeSet author="lb-generated" id="1185214997195-1">
-        <createTable tableName="DEMO">
+        <createTable tableName="TODO">
             <column name="ID" type="SERIAL" />
+            <column name="DONE" type="BOOLEAN" />
+            <column name="DESCRIPTION" type="VARCHAR" />
         </createTable>
     </changeSet>
 

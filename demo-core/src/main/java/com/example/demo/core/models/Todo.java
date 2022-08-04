@@ -9,7 +9,11 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 @ToString
-public class Demo {
+public class Todo {
 
     private Long id;
+
+    private boolean done;
+
+    private String description;
 }

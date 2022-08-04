@@ -1,12 +1,12 @@
 package com.example.demo.api.mapper;
 
-import com.example.demo.api.dto.DemoDto;
-import com.example.demo.core.models.Demo;
+import com.example.demo.api.dto.TodoDto;
+import com.example.demo.core.models.Todo;
 import org.mapstruct.Mapper;
 
 @Mapper
 public interface DemoDtoMapper {
 
-    DemoDto toDto(Demo demo);
+    TodoDto toDto(Todo todo);
 
 }

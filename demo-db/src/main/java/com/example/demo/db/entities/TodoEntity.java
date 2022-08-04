@@ -12,14 +12,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Demo")
+@Table(name = "todo")
 @Getter
 @Setter
 @Accessors(chain = true)
 @ToString
-public class DemoEntity {
+public class TodoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private boolean done;
+
+    private String description;
 }

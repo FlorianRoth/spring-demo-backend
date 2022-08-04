@@ -43,10 +43,10 @@ The only information that "leaks" out of a module is its profile name which is r
 
 The Demo Application defines the following modules:
 
-- [Spring Boot Application](./demo-app)
-- [Application Core](./demo-core)
-- [Database Adapter](./demo-db)
-- [REST API Adapter](./demo-api)
+- [Spring Boot Application](./todo-app)
+- [Application Core](./todo-core)
+- [Database Adapter](./todo-db)
+- [REST API Adapter](./todo-api)
 
 ### Naming Schemes
 
@@ -90,14 +90,14 @@ another module due to same package names.
 
 | Module      | Base package            |
 |-------------|-------------------------|
-| `demo-api`  | `com.example.demo.api`  |
-| `demo-app`  | `com.example.demo.app`  |
-| `demo-core` | `com.example.demo.core` |
-| `demo-db`   | `com.example.demo.db`   |
+| `todo-api`  | `com.example.todo.api`  |
+| `todo-app`  | `com.example.todo.app`  |
+| `todo-core` | `com.example.todo.core` |
+| `todo-db`   | `com.example.todo.db`   |
 
 #### Spring Profiles
 
-Each module has a configuration for a Spring profile named after the module (profile `db` for `demo-db`, etc.).
+Each module has a configuration for a Spring profile named after the module (profile `db` for `todo-db`, etc.).
 These profiles are loaded through the `spring.profiles.include` property in the main `application.yml` file.
 
 In addition to the Spring profiles defined by each module there are three more Spring profiles representing different
@@ -124,12 +124,12 @@ In order to provide stage specific configuration for a module you can make use o
 configuration files.
 
 ```yaml
-demo-api:
+todo-api:
   some-property: 'foo'
 
 ---
 spring.config.activate.on-profile: dev
-demo-api:
+todo-api:
   some-property: 'foo on dev'
 ```
 
@@ -158,7 +158,7 @@ spring:
 logging:
   # Logging properties
 
-demo-core:
+todo-core:
   # Module properties
 ```
 

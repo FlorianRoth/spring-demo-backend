@@ -6,11 +6,11 @@
 
     <parent>
         <groupId>com.example</groupId>
-        <artifactId>demo-parent</artifactId>
+        <artifactId>todo-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>demo-app</artifactId>
+    <artifactId>todo-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>Demo - Spring Boot App</name>
@@ -19,12 +19,12 @@
 
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>demo-api</artifactId>
+            <artifactId>todo-api</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>demo-db</artifactId>
+            <artifactId>todo-db</artifactId>
         </dependency>
 
         <dependency>

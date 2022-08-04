@@ -14,25 +14,18 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 @ApiResponse(
-        responseCode = "406",
-        description = "The requested media type is not accepted by the server",
+        responseCode = "401",
+        description = "The request did not contain a sufficient authentication",
         content = @Content(
                 mediaType = MediaType.APPLICATION_JSON_VALUE,
                 schema = @Schema(implementation = ApiErrorDto.class))
 )
 @ApiResponse(
-        responseCode = "404",
-        description = "The resource was not found",
+        responseCode = "403",
+        description = "Access to the resource is forbidden",
         content = @Content(
                 mediaType = MediaType.APPLICATION_JSON_VALUE,
                 schema = @Schema(implementation = ApiErrorDto.class))
 )
-@ApiResponse(
-        responseCode = "500",
-        description = "Internal error",
-        content = @Content(
-                mediaType = MediaType.APPLICATION_JSON_VALUE,
-                schema = @Schema(implementation = ApiErrorDto.class))
-)
-public @interface DefaultApiResponses {
+public @interface AuthApiResponse {
 }

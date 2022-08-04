@@ -1,0 +1,21 @@
+GET {{host}}/api/v1/todos
+Accept: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+
+GET {{host}}/api/v1/todos
+Accept: application/xml
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+
+POST {{host}}/api/v1/todos
+Accept: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+###
+
+DELETE {{host}}/api/v1/todos/1
+Accept: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==

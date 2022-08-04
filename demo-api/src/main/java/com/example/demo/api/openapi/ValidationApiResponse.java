@@ -14,25 +14,11 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 @ApiResponse(
-        responseCode = "406",
-        description = "The requested media type is not accepted by the server",
+        responseCode = "400",
+        description = "The request entity could not be validated",
         content = @Content(
                 mediaType = MediaType.APPLICATION_JSON_VALUE,
                 schema = @Schema(implementation = ApiErrorDto.class))
 )
-@ApiResponse(
-        responseCode = "404",
-        description = "The resource was not found",
-        content = @Content(
-                mediaType = MediaType.APPLICATION_JSON_VALUE,
-                schema = @Schema(implementation = ApiErrorDto.class))
-)
-@ApiResponse(
-        responseCode = "500",
-        description = "Internal error",
-        content = @Content(
-                mediaType = MediaType.APPLICATION_JSON_VALUE,
-                schema = @Schema(implementation = ApiErrorDto.class))
-)
-public @interface DefaultApiResponses {
+public @interface ValidationApiResponse {
 }

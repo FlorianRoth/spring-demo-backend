@@ -6,11 +6,11 @@
 
     <parent>
         <groupId>com.example</groupId>
-        <artifactId>demo-parent</artifactId>
+        <artifactId>todo-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>demo-db</artifactId>
+    <artifactId>todo-db</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>Demo - Database</name>
@@ -19,7 +19,7 @@
 
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>demo-core</artifactId>
+            <artifactId>todo-core</artifactId>
         </dependency>
 
         <dependency>

@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>demo-parent</artifactId>
+    <artifactId>todo-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -42,25 +42,25 @@
 
             <dependency>
                 <groupId>com.example</groupId>
-                <artifactId>demo-api</artifactId>
+                <artifactId>todo-api</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
             <dependency>
                 <groupId>com.example</groupId>
-                <artifactId>demo-app</artifactId>
+                <artifactId>todo-app</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
             <dependency>
                 <groupId>com.example</groupId>
-                <artifactId>demo-core</artifactId>
+                <artifactId>todo-core</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
             <dependency>
                 <groupId>com.example</groupId>
-                <artifactId>demo-db</artifactId>
+                <artifactId>todo-db</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
