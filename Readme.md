@@ -47,6 +47,7 @@ The Demo Application defines the following modules:
 - [Application Core](./todo-core)
 - [Database Adapter](./todo-db)
 - [REST API Adapter](./todo-api)
+- [Kafka Adapter](./todo-kafka)
 
 ### Naming Schemes
 

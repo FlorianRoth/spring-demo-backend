@@ -16,7 +16,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Demo</name>
+    <name>Todo Demo</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -31,10 +31,11 @@
     </properties>
 
     <modules>
-        <module>demo-api</module>
-        <module>demo-app</module>
-        <module>demo-core</module>
-        <module>demo-db</module>
+        <module>todo-api</module>
+        <module>todo-app</module>
+        <module>todo-core</module>
+        <module>todo-db</module>
+        <module>todo-kafka</module>
     </modules>
 
     <dependencyManagement>
@@ -61,6 +62,12 @@
             <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>todo-db</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.example</groupId>
+                <artifactId>todo-kafka</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
 
