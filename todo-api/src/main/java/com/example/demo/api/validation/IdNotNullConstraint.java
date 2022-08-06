@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 
 @Documented
 @Constraint(validatedBy = IdNotNullValidator.class)
-@Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IdNotNullConstraint {
     String message() default "Id not set";

@@ -19,7 +19,7 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 .antMatchers("/swagger-ui.html").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
-                .antMatchers("/v3/api-docs/**").permitAll()
+                .antMatchers("/v3/**").permitAll()
                 .antMatchers("/actuator/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
