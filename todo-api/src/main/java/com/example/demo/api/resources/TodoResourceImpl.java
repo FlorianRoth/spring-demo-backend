@@ -54,7 +54,10 @@ public class TodoResourceImpl implements TodoResource {
     }
 
     public ResponseEntity<TodoDto> put(TodoDto body) {
-        var updateResult = this.updateTodoUseCase.updateTodo(body.getId(), body.getDone(), body.getDescription());
+        var updateResult = this.updateTodoUseCase.updateTodo(
+                body.getId(),
+                body.getDone(),
+                body.getDescription());
 
         var result = demoMapper.toDto(updateResult.getKey());
 

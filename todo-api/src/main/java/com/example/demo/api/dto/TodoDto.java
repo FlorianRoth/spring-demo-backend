@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -25,4 +29,12 @@ public class TodoDto implements HasId {
     @Size(min = 1, message = "Description must not be empty")
     @Size(max = 50, message = "Description must not be longer than 50 characters")
     private String description;
+
+    private Date date = new Date();
+
+    private LocalDate localDate = LocalDate.now();
+
+    private LocalDateTime localDateTime = LocalDateTime.now();
+
+    private ZonedDateTime zonedDateTime = ZonedDateTime.now();
 }
